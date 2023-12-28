@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey</title>
+    <style>
+        body {
+            background-color: #49aded;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            width: 60%; /* Set the width to 60% of the container width */
+            height: auto; /* Maintain the aspect ratio */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 60%;
+            margin-top: 20px; /* Adjust the margin as needed */
+        }
+
+        .button {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%; /* Make the button perfectly circular */
+            width: 50px; /* Set the width of the button */
+            height: 50px; /* Set the height of the button */
+            position: absolute;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Button container -->
+    <div class="button-container">
+        <!-- "YES?" button -->
+        <button class="button" onclick="openModal()">YES?</button>
+
+        <!-- Add the image -->
+        <img src="2.png" alt="Image 2">
+
+        <!-- "NO!" button -->
+        <button class="button" id="noButton" onclick="moveButton()">NO!</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="overlay" id="overlay" onclick="closeModal()"></div>
+    <div class="modal" id="modal">
+        <img src="3.png" alt="Image 3">
+    </div>
+
+    <script>
+        var noButton = document.getElementById('noButton');
+        var modal = document.getElementById('modal');
+        var overlay = document.getElementById('overlay');
+
+        function moveButton() {
+            var angle = Math.random() * 2 * Math.PI; // Random angle between 0 and 2 * PI
+            var distance = 50;
+
+            var newX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            var newY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+            noButton.style.left = newX + 'px';
+            noButton.style.top = newY + 'px';
+        }
+
+        function openModal() {
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
